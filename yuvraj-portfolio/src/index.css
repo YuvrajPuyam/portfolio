@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    height: 100%;
+    background-color: #111111;
+  }
+
+  body {
+    margin: 0;
+    @apply text-white font-sans antialiased;
+  }
+
+  #root {
+    height: 100%;
+  }
+}
+
+@layer components {
+  /* One shared container contract (used by header + all pages) */
+  .page-container {
+    @apply mx-auto w-full max-w-[1440px] px-3 sm:px-5 lg:px-6;
+  }
+
+  /* One shared 12-col grid contract (used by all sections) */
+  .grid-12 {
+    @apply grid grid-cols-12 gap-y-6 gap-x-4 lg:gap-x-6 items-start justify-items-start;
+  }
+
+  /* Section labels (ABOUT / TEAM / DESCRIPTION) */
+  .section-kicker {
+    @apply text-[11.5px] uppercase tracking-[0.18em] text-white/40 font-medium;
+  }
+
+  /* Body copy */
+  .body-copy {
+    @apply text-[15px] leading-[1.55] font-semibold text-white/90;
+  }
+
+  /* Titles like Company / Project names */
+  .content-title {
+    @apply text-[15px] font-semibold text-white/90;
+  }
+
+  /* Description column text */
+  .content-body {
+    @apply text-[15px] leading-[1.55] font-semibold text-white/80;
+  }
+
+  /* Muted meta text */
+  .muted {
+    @apply text-white/50 font-medium;
+  }
+
+  /* Masonry: 1 col mobile, 2 tablet, 3 desktop */
+  .masonry {
+    @apply columns-1 md:columns-2 lg:columns-3 gap-3;
+  }
+
+  /* Prevent cards from splitting between columns */
+  .masonry-item {
+    @apply break-inside-avoid mb-3;
+  }
+
+  .page-container {
+  @apply mx-auto w-full max-w-[1440px] px-3 sm:px-3 lg:px-3;
+}
+
+.highlight-link {
+    @apply inline-flex items-start gap-1
+           text-white
+           underline underline-offset-4
+           decoration-dotted decoration-white/30
+           transition-colors;
+  }
+
+  .highlight-link:hover,
+  .highlight-link:focus-visible {
+    @apply text-yellow-400 decoration-yellow-400 outline-none;
+  }
+
+  /* Superscript arrow */
+  .highlight-link-sup {
+    @apply text-yellow-400 text-[0.65em] leading-none no-underline !important;
+    vertical-align: super;
+    position: relative;
+    top: -0.1em; /* optical correction */
+  }
+}
