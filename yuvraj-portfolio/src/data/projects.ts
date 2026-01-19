@@ -58,7 +58,7 @@ export const PROJECTS: Project[] = [
     slug: "monte-carlo-ray-tracer",
     title: "Monte Carlo Ray Tracer",
     category: "Built on CUDA",
-    mediaSrc: withBase("media/projects/raytracer.PNG"),
+    mediaSrc: withBase("media/projects/raytracer.png"),
     mediaType: "image",
     role: "Graphics Engineer",
     year: "2025",

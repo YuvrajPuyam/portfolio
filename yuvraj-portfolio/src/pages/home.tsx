@@ -116,7 +116,7 @@ export default function Home() {
         {/* ===== Intro: 12-col grid ===== */}
         <section className="grid-12 px-3">
           {/* ABOUT (6) */}
-          <div className="col-span-12 lg:col-span-6 pr-[50px]">
+         <div className="col-span-12 lg:col-span-5">
             <div className="section-kicker">About</div>
 
             <p className="mt-2 body-copy">
@@ -139,7 +139,7 @@ export default function Home() {
               .
             </p>
           </div>
-
+          <div className="hidden lg:block lg:col-span-1" />
           {/* RIGHT SIDE (6 total): TEAM (2) + DESCRIPTION (4) */}
           <div className="col-span-12 lg:col-span-6">
             {/* Header Row */}
