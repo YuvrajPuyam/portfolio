@@ -3,6 +3,8 @@ import Shell from "../components/layout/Shell";
 import Footer from "../components/layout/Footer";
 import { PROJECTS } from "../data/projects";
 
+
+
 export default function Project() {
   const { slug } = useParams();
   const project = PROJECTS.find((p) => p.slug === slug);
@@ -25,26 +27,30 @@ export default function Project() {
 
   return (
     <Shell>
-      {/* 1. MAIN IMAGE (STICKY BACKGROUND) */}
-      <div className="sticky top-0 z-0 w-full h-screen bg-[#111111] overflow-hidden">
-        {project.mediaType === "video" ? (
-          <video
-            src={project.mediaSrc}
-            className="w-full h-full object-cover"
-            autoPlay
-            loop
-            muted
-            playsInline
-          />
-        ) : (
-          <img
-            src={project.mediaSrc}
-            alt={project.title}
-            className="w-full h-full object-cover"
-          />
-        )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#111111] via-transparent to-transparent opacity-30" />
-      </div>
+{/* FULL-WIDTH HERO — NO SHADOW / NO FADE */}
+<div className="relative left-1/2 right-1/2 w-full -ml-[50vw] -mr-[50vw] overflow-hidden bg-[#111111]">
+  <div className="relative aspect-[16/9]">
+    {project.mediaType === "video" ? (
+      <video
+        src={project.mediaSrc}
+        className="absolute inset-0 h-full w-full object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+      />
+    ) : (
+      <img
+        src={project.mediaSrc}
+        alt={project.title}
+        className="absolute inset-0 h-full w-full object-cover"
+      />
+    )}
+  </div>
+</div>
+
+
+
 
       {/* 2. MAIN CONTENT (SCROLLING CURTAIN) */}
       <div className="relative z-10 bg-[#111111]">
@@ -74,7 +80,7 @@ export default function Project() {
                 <div className="md:columns-2 gap-x-12 mb-20">
                   <div className="body-copy">
                     {descriptionParagraphs.map((paragraph, index) => (
-                      <p key={index} className={index > 0 ? "mt-6 md:mt-0" : ""}>
+                      <p key={index} className="mb-6 last:mb-0">
                         {paragraph}
                       </p>
                     ))}
@@ -145,36 +151,22 @@ export default function Project() {
 
                 {/* More Images / Gallery */}
                 {project.gallery && project.gallery.length > 0 && (
-                  <div className="space-y-12">
-                    {/* First image (Full Width) */}
-                    <div className="w-full bg-white/[0.02]">
-                      <img 
-                        src={project.gallery[0]} 
-                        alt={`${project.title} detail 1`} 
+                <div className="space-y-12">
+                  {project.gallery.map((imgSrc, i) => (
+                    <div key={i} className="w-full bg-white/[0.02]">
+                      <img
+                        src={imgSrc}
+                        alt={`${project.title} detail ${i + 1}`}
                         className="w-full h-auto opacity-90"
                       />
-                      {/* Optional caption if needed, static for now per your template */}
                       <div className="mt-2 text-[11px] text-white/40 tracking-widest uppercase font-mono">
-                        Fig 1.1 — Detail View
+                        Fig {i + 1}.0 — Detail View
                       </div>
                     </div>
-                    
-                    {/* Remaining images (Grid) */}
-                    {project.gallery.length > 1 && (
-                      <div className="grid grid-cols-2 gap-6">
-                        {project.gallery.slice(1).map((imgSrc, i) => (
-                          <div key={i}>
-                             <img 
-                                src={imgSrc}
-                                alt={`${project.title} detail ${i + 2}`}
-                                className="bg-white/[0.05] aspect-[4/3] w-full object-cover opacity-90"
-                             />
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                )}
+                  ))}
+                </div>
+              )}
+
 
               </div>
             </div>

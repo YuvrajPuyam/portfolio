@@ -22,6 +22,7 @@ export type Project = {
   // Links
   liveUrl?: string;
   repoUrl?: string;
+  orgUrl?: string;
 
   // Gallery
   gallery?: string[];
@@ -34,23 +35,27 @@ const withBase = (p: string) =>
 export const PROJECTS: Project[] = [
   {
     slug: "biup-ai",
-    title: "BiUP.ai",
-    category: "Car Configurator",
+    title: "BiUP.ai Configurator ",
+    category: "Immersive Tech",
     mediaSrc: withBase("media/projects/pc.mp4"),
     mediaType: "video",
-    role: "Core Engineer",
+    role: "Full Stack Engineer",
     year: "2024 — 2025",
-    tools: ["React", "Three.js", "WebGL", "Node.js", "AWS"],
-    collaborators: ["BiUP Engineering Team", "Product Managers"],
-    liveUrl: "https://www.biup.ai/",
-    repoUrl: "https://github.com/YuvrajPuyam",
+    tools: ["GoLang", "React", "Babylon.js", "WebGL","AWS"],
+    collaborators: ["Paras Sain", "Rohit Ranjan"],
+    liveUrl: "https://mg-configurator.biup.ai/astor",
+    orgUrl: "https://www.biup.ai/",
     summary:
       "Core engineer on the flagship Car Configurator product, owning features end to end across frontend and backend.",
     description:
-      "This project involved re-engineering the core visualization pipeline for a high-fidelity automotive configurator.\n\nBeyond the frontend, I handled backend integration for asset delivery, optimizing geometry and texture streaming.",
+      `
+At BiUP, I worked as a core engineer on the Car Configurator product, building real-time 3D experiences for automotive clients like MG, Škoda, and Volkswagen. Working in a small, fast-paced team, I learned how production systems are designed, deployed, and iterated on in a startup environment.
+
+I collaborated closely with designers, product managers, and client teams to balance visual quality, performance, and reliability while shipping features across the frontend and backend. The role required moving fluidly between system design, deployment, and real-time rendering, developing a strong sense of ownership over the product. I also built smaller tools like showroom booking systems and internal utilities on the side.
+
+My time at BiUP shaped how I approach building interactive systems with an emphasis on clarity, performance, and close collaboratio`,
     gallery: [
-      withBase("media/projects/biup_1.png"),
-      withBase("media/projects/biup_2.png"),
+      
     ],
   },
 
@@ -61,16 +66,17 @@ export const PROJECTS: Project[] = [
     mediaSrc: withBase("media/projects/raytracer.png"),
     mediaType: "image",
     role: "Graphics Engineer",
-    year: "2025",
-    tools: ["C++", "CUDA", "OptiX", "CMake"],
+    year: "4 Weeks",
+    tools: ["C++", "CUDA", "CMake"],
     collaborators: ["Academic Project"],
-    repoUrl: "https://github.com/YuvrajPuyam",
+    repoUrl: "https://github.com/YuvrajPuyam/Monte-Carlo-Ray-Tracer-in-Cuda",
     summary: "Monte Carlo ray tracer built on CUDA (baseline, no BVH yet).",
     description:
-      "A physically based renderer implemented from scratch using CUDA to leverage massive parallelism.\n\nFuture iterations will incorporate acceleration structures.",
+      `A CUDA-based Monte Carlo ray tracer built from the ground up to simulate realistic light transport on the GPU. The renderer supports high resolution output with up to 128 samples per pixel, enabling physically plausible lighting and global illumination.
+
+The project began as an effort to reduce the runtime of Peter Shirley’s CPU-based ray tracer and evolved into a deeper exploration of GPU programming with CUDA. Through this work, I gained practical insight into parallelism, memory access patterns, and performance tradeoffs involved in GPU-based rendering.`,
     gallery: [
-      withBase("media/projects/raytracer_debug.png"),
-      withBase("media/projects/raytracer_result.png"),
+      withBase("media/projects/Ellipsoid.png"),
     ],
   },
 
@@ -100,17 +106,22 @@ export const PROJECTS: Project[] = [
     mediaSrc: withBase("media/projects/avocado_recon.gif"),
     mediaType: "image",
     role: "Researcher",
-    year: "2025",
-    tools: ["Python", "PyTorch3D", "OpenGL", "NumPy"],
+    year: "4 Weeks",
+    tools: ["CUDA", "C++" ,"PyTorch"],
     collaborators: ["Coursework"],
-    repoUrl: "https://github.com/YuvrajPuyam",
+    repoUrl: "https://github.com/YuvrajPuyam/Differentiable-Rasterizer-Cuda",
     summary:
       "Differentiable rasterization + inverse rendering for 3D reconstruction.",
     description:
-      "Inverse graphics pipeline using differentiable rasterization.\n\nSupports single and multi-view reconstruction.",
+      `A differentiable rasterizer is a rendering system that replaces the hard, discontinuous decisions in traditional rasterization (like visibility tests and triangle coverage) with smooth, gradient-friendly approximations. This allows gradients to flow from pixel-level losses back through the renderer to scene parameters like mesh vertices and camera poses, enabling inverse graphics tasks such as shape reconstruction and pose estimation.
+
+      I built this project as my first step into neural rendering and as a way to bridge traditional graphics with modern machine learning. It also gave me a concrete reason to practice CUDA programming.
+      \n\n\n
+      I implemented a custom differentiable rasterizer from scratch in CUDA and C++ with a PyTorch interface, building all core components manually: rasterization, camera projection, loss functions, and the optimization loop. The system reconstructs 3D geometry from silhouette images alone using gradient-based optimization on vertex positions.`,
     gallery: [
-      withBase("media/projects/recon_wireframe.png"),
-      withBase("media/projects/recon_textured.png"),
+      withBase("media/projects/tree_recon.gif"),
+      withBase("media/projects/kettle_original.png"),
+      withBase("media/projects/kettle_recon.gif"),
     ],
   },
 
@@ -118,17 +129,17 @@ export const PROJECTS: Project[] = [
     slug: "n-body-particle-simulator",
     title: "N-Body Particle Simulator",
     category: "Simulation",
-    mediaSrc: withBase("media/projects/particle_simulator.mp4"),
+    mediaSrc: withBase("media/projects/nbody.mp4"),
     mediaType: "video",
-    role: "Systems Engineer",
-    year: "2024",
-    tools: ["C++", "Vulkan", "Compute Shaders", "GLSL"],
+    role: "Developer",
+    year: "2 weeks",
+    tools: ["WebGPU", "Compute Shaders", "WGSL"],
     collaborators: ["Solo Project"],
-    repoUrl: "https://github.com/YuvrajPuyam",
+    repoUrl: "https://github.com/YuvrajPuyam/Gravity-Particle-Simulator-WebGPU",
     summary: "GPU-driven particle simulation exploring N-body dynamics.",
     description:
-      "High-performance particle simulation entirely offloaded to the GPU.\n\nUses compute shaders and instanced rendering.",
-    gallery: [withBase("media/projects/particles_1.png")],
+      `A real-time N-body gravity simulator running entirely on the GPU using WebGPU compute shaders. The simulation calculates gravitational interactions between thousands of particles in parallel, creating spiral galaxy formations around a central mass. Built with interactive controls to adjust particle count, workgroup size, and GPU power preference to explore how different parallelization parameters affect performance.`,
+    gallery: [],
   },
 
   {
@@ -139,7 +150,7 @@ export const PROJECTS: Project[] = [
     mediaType: "image",
     role: "Full Stack Engineer",
     year: "2022 — 2024",
-    tools: ["Angular", "Python", "AWS", "PostgreSQL", "LLMs"],
+    tools: ["Angular", "Flask", "AWS", "PostgreSQL", "LLMs"],
     collaborators: ["ZS Enterprise Team", "Data Science Team"],
     liveUrl: "https://www.zs.com/",
     summary:
@@ -152,21 +163,21 @@ export const PROJECTS: Project[] = [
   {
     slug: "the-gallery-of-computation",
     title: "The Gallery Of Computation",
-    category: "Generative Art Platform",
-    mediaSrc: withBase("media/projects/goc.png"),
+    category: "E-Commerce Generative Art Platform",
+    mediaSrc: withBase("media/projects/gc1.png"),
     mediaType: "image",
-    role: "Solo Developer",
+    role: "Developer",
     year: "2023",
-    tools: ["React", "p5.js", "Stripe API", "Firebase"],
-    collaborators: ["Solo Project"],
+    tools: ["Django","HTML/CSS", "p5.js", "PayPal API" ],
+    collaborators: ["Raunit Singh"],
     liveUrl: "https://galleryofcomputation.com",
     summary:
       "E-commerce platform for generative art — design, build, and delivery.",
     description:
-      "Marketplace for algorithmic art with live previews.\n\nIntegrated payments and digital asset delivery.",
+      "Generative art refers to art that in whole or in part has been created with the use of an autonomous system. An autonomous system in this context is generally one that is non-human and can independently determine features of an artwork that would otherwise require decisions made directly by the artist. In some cases the human creator may claim that the generative system represents their own artistic idea, and in others that the system takes on the role of the creator.",
     gallery: [
-      withBase("media/projects/goc_mobile.png"),
-      withBase("media/projects/goc_checkout.png"),
+      withBase("media/projects/shop.png"),
+      withBase("media/projects/goc.png"),
     ],
   },
 
@@ -185,7 +196,7 @@ export const PROJECTS: Project[] = [
       "Web-based AR research for interactive 3D visualization.",
     description:
       "Developed WebXR-based visualization tools.\n\nHandled SfM pipelines and mesh optimization.",
-    gallery: [],
+    gallery: [withBase("media/projects/ar2.png"), withBase("media/projects/ar3.png")],
   },
 
   {
