@@ -77,7 +77,7 @@ export default function Project() {
               <div className="col-span-12 md:col-span-9">
                 
                 {/* Description */}
-                <div className="md:columns-2 gap-x-12 mb-20">
+                <div className="md:columns-2 gap-x-12 mb-10">
                   <div className="body-copy">
                     {descriptionParagraphs.map((paragraph, index) => (
                       <p key={index} className="mb-6 last:mb-0">
@@ -88,7 +88,7 @@ export default function Project() {
                 </div>
 
                 {/* Metadata Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 border-t border-white/10 pt-10 mb-20">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-12 border-t border-white/10 pt-10 mb-10">
                   <div className="grid grid-cols-2 gap-6">
                     <div>
                       <div className="section-kicker mb-3">Role</div>
@@ -121,8 +121,8 @@ export default function Project() {
                 </div>
 
                 {/* Action Buttons */}
-                {(project.liveUrl || project.repoUrl) && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 mb-32">
+                {(project.liveUrl || project.repoUrl || project.orgUrl) && (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4 mb-10">
                     {project.liveUrl && (
                       <a 
                         href={project.liveUrl} 
@@ -142,7 +142,19 @@ export default function Project() {
                         rel="noreferrer"
                         className="group flex items-center justify-between border-b border-white/20 py-4 hover:border-white transition-colors"
                       >
-                        <span className="section-kicker text-white/90">Read Case Study</span>
+                        <span className="section-kicker text-white/90">Github</span>
+                        <sup className="highlight-link-sup group-hover:text-amber-400">↗</sup>
+                      </a>
+                    )}
+
+                    {project.orgUrl && (
+                      <a 
+                        href={project.orgUrl} 
+                        target="_blank" 
+                        rel="noreferrer"
+                        className="group flex items-center justify-between border-b border-white/20 py-4 hover:border-white transition-colors"
+                      >
+                        <span className="section-kicker text-white/90">Organization</span>
                         <sup className="highlight-link-sup group-hover:text-amber-400">↗</sup>
                       </a>
                     )}

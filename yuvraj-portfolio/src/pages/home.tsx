@@ -125,11 +125,11 @@ export default function Home() {
               scaled, and infused with intelligence through rendering and simulation pipelines. <br/><br/> I have Bachelor's Degree in
               Computer Science and am currently pursuing a Master's at Purdue University,
               specializing in Artificial Intelligence for Computer Graphics. Currently researching at{" "}
-              <a href="#" className="highlight-link">
+              <a href="https://polytechnic.purdue.edu/facilities/games-innovation-laboratory" className="highlight-link">
                 Games Innovation Lab 
               </a><sup className="highlight-link-sup" aria-hidden="true">↗</sup>{" "}
               &{" "}
-              <a href="#" className="highlight-link">
+              <a href="https://ideas.cs.purdue.edu/" className="highlight-link">
                 Ideas Lab 
               </a><sup className="highlight-link-sup" aria-hidden="true">↗</sup>
               . If you're exploring ambitious ideas in Visual/Spatial computing or GPU-driven systems, I'd love to connect{" "}

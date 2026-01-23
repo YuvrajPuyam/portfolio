@@ -42,7 +42,7 @@ export const PROJECTS: Project[] = [
     role: "Full Stack Engineer",
     year: "2024 — 2025",
     tools: ["GoLang", "React", "Babylon.js", "WebGL","AWS"],
-    collaborators: ["Paras Sain", "Rohit Ranjan"],
+    collaborators: ["Paras Sain", "Rohit Ranjan", "Ram Asheesh Vishvkarma"],
     liveUrl: "https://mg-configurator.biup.ai/astor",
     orgUrl: "https://www.biup.ai/",
     summary:
@@ -53,7 +53,7 @@ At BiUP, I worked as a core engineer on the Car Configurator product, building r
 
 I collaborated closely with designers, product managers, and client teams to balance visual quality, performance, and reliability while shipping features across the frontend and backend. The role required moving fluidly between system design, deployment, and real-time rendering, developing a strong sense of ownership over the product. I also built smaller tools like showroom booking systems and internal utilities on the side.
 
-My time at BiUP shaped how I approach building interactive systems with an emphasis on clarity, performance, and close collaboratio`,
+My time at BiUP shaped how I approach building interactive systems with an emphasis on clarity, performance, and close collaboration`,
     gallery: [
       
     ],
@@ -88,14 +88,14 @@ The project began as an effort to reduce the runtime of Peter Shirley’s CPU-ba
     mediaType: "video",
     role: "Graduate Researcher",
     year: "2025 — Present",
-    tools: ["Python", "PyTorch", "Mujoco", "Unity"],
-    collaborators: ["Ideas Lab", "Prof. Bedrich Benes"],
+    tools: ["Python", "PyTorch", "Issac Gym"],
+    collaborators: ["Ideas Lab", "Prerit Gupta"],
     summary: "Physics-aware human motion generation research.",
     description:
-      "This research focuses on generating realistic human motion that adheres to physical constraints.\n\nWork involves reinforcement learning and diffusion models.",
-    gallery: [
-      withBase("media/projects/motion_1.png"),
-      withBase("media/projects/motion_2.png"),
+      `This research explores physically grounded human motion generation without relying on reference motion data. The work focuses on enforcing physical constraints directly during optimization to produce stable, realistic motion.
+
+My current work involves replicating and extending InterestingZhuo’s single-human motion generation framework using reinforcement learning and diffusion-based models. Ongoing research expands this approach to dual-agent motion generation, enabling physically consistent interaction between multiple human bodies.`,
+          gallery: [
     ],
   },
 
@@ -151,13 +151,29 @@ The project began as an effort to reduce the runtime of Peter Shirley’s CPU-ba
     role: "Full Stack Engineer",
     year: "2022 — 2024",
     tools: ["Angular", "Flask", "AWS", "PostgreSQL", "LLMs"],
-    collaborators: ["ZS Enterprise Team", "Data Science Team"],
-    liveUrl: "https://www.zs.com/",
+    collaborators: ["Anurag Mohta", "Sushant Sachdeva", "Muskan Jain", "Kunal Pal", "..."],
+    orgUrl: "https://www.zs.com/",
     summary:
       "Full-stack engineering on FORWARD, ZS’s enterprise forecasting suite.",
     description:
-      "Designed scalable backend services and led LLM integration R&D.\n\nBuilt retrieval-augmented generation workflows.",
-    gallery: [],
+      `FORWARD is a cloud-native forecasting solution developed at ZS Associates that helps organizations modernize forecasting through centralized governance, advanced analytics, and enterprise-grade reporting.
+
+This was my longest-running and highest-impact project at ZS. I worked across the full stack, contributing to:
+
+Angular frontend development for scalable, user-facing workflows
+
+Flask backend services powering forecasting logic and APIs
+
+AWS system architecture, including modernization and performance tuning
+
+Re-implementation and optimization of legacy components integrated into FORWARD
+
+Through architectural redesign and API-level optimizations, I improved concurrency and latency by up to 96%, enabling the platform to scale reliably for high-traffic enterprise use cases.
+
+FORWARD went on to win ZS’s Impact Award and became one of the firm’s most successful and commercially impactful products, used by major clients for large-scale forecasting and planning.`,  
+ gallery: [withBase("media/projects/forward2.png"),
+  withBase("media/projects/forward3.png"),
+ ],
   },
 
   {
@@ -167,10 +183,11 @@ The project began as an effort to reduce the runtime of Peter Shirley’s CPU-ba
     mediaSrc: withBase("media/projects/gc1.png"),
     mediaType: "image",
     role: "Developer",
-    year: "2023",
+    year: "16 Weeks",
     tools: ["Django","HTML/CSS", "p5.js", "PayPal API" ],
     collaborators: ["Raunit Singh"],
-    liveUrl: "https://galleryofcomputation.com",
+    liveUrl: "https://galleryofcomputation.store/",
+    repoUrl: "https://github.com/raunit-x/The-Gallery-of-Computation",
     summary:
       "E-commerce platform for generative art — design, build, and delivery.",
     description:
@@ -188,14 +205,14 @@ The project began as an effort to reduce the runtime of Peter Shirley’s CPU-ba
     mediaSrc: withBase("media/projects/ar.png"),
     mediaType: "image",
     role: "Research Intern",
-    year: "2022",
-    tools: ["WebXR", "Three.js", "Python", "Colmap"],
-    collaborators: ["ISRO Scientists"],
-    liveUrl: "https://www.isro.gov.in/",
+    year: "12 weeks",
+    tools: ["WebXR", "Blender", "Python", "PyTorch"],
+    collaborators: ["Puyam S Singh"],
+    orgUrl: "https://www.isro.gov.in/",
     summary:
       "Web-based AR research for interactive 3D visualization.",
     description:
-      "Developed WebXR-based visualization tools.\n\nHandled SfM pipelines and mesh optimization.",
+      `At ISRO, I built a web-based AR viewer for 3D terrain models reconstructed from UAV imagery. The system used a Structure-from-Motion pipeline to generate terrain models and displayed them in AR for visualization and analysis. I improved mobile AR performance by 80% through mesh decimation and texture compression in Blender, making the models practical to view on mobile devices.`,
     gallery: [withBase("media/projects/ar2.png"), withBase("media/projects/ar3.png")],
   },
 
@@ -212,8 +229,9 @@ The project began as an effort to reduce the runtime of Peter Shirley’s CPU-ba
     repoUrl: "https://github.com/YuvrajPuyam",
     summary:
       "Depth map generation + edge-aware refinement pipeline.",
-    description:
-      "Reduced boundary artifacts using joint bilateral upsampling.\n\nImproved RMSE against ground truth datasets.",
+    description:`This project implements an edge-aware refinement module for monocular depth estimation. Starting from a baseline depth prediction (Depth Anything V2), the model sharpens object boundaries, corrects spatial inconsistencies, and improves metric accuracy on NYUv2 and KITTI.
+
+The refinement module uses a Conditional Random Field inspired affinity mechanism, where pairwise weights are computed from feature and edge differences to guide edge-aware message passing.`,
     gallery: [],
   },
 ];
