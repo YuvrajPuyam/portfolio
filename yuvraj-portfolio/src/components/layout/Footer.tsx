@@ -6,7 +6,7 @@ export default function Footer({ version = "v1.0.0" }: Props) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-16 bg-neutral-900  flex flex-col justify-end">
+    <footer className="relative mt-16 bg-neutral-900  ">
       <div className="page-container w-full">
         {/* Top divider */}
         <div className="h-px w-full bg-white/10" />
@@ -29,12 +29,12 @@ export default function Footer({ version = "v1.0.0" }: Props) {
           <div className="col-span-12 md:col-span-2 space-y-2 mb-6 md:mb-0">
             <div>
               <a
-                href="https://www.are.na/"
+                href="https://drive.google.com/file/d/1VHRH0vDazNCQv6p3LEoceC1T6KIF3Jbo/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="highlight-link"
               >
-                Reading
+                Resume
               </a>
               <sup className="highlight-link-sup" aria-hidden="true">↗</sup>
             </div>

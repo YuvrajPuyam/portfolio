@@ -1,16 +1,25 @@
 import Header from "./Header";
 import ScrollToTop from "./ScrollToTop";
+import Footer from "./Footer";
 
 export default function Shell({ children }: { children: React.ReactNode }) {
   return (
-    <div className="min-h-screen text-white ">
+    <div className="min-h-screen w-full bg-[#111111] text-white">
       <ScrollToTop />
+
       <Header
         name="Yuvraj Puyam"
         role="Graphics & AI Engineer"
         locationText="West Lafayette, IN"
       />
-      <main className="page-container py-5 px-0 pb-0 pt-0 bg-[#111111]" >{children}</main>
+
+      {/* Constrained content */}
+      <main className="page-container pt-0 pb-0 px-0">
+        {children}
+      </main>
+
+      {/* Full-width footer background */}
+      <Footer />
     </div>
   );
 }

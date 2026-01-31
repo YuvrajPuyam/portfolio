@@ -200,9 +200,9 @@ export default function Home() {
       </div>
 
       {/* CURTAIN EFFECT PART 2: Sticky Footer */}
-      <div className="sticky bottom-0 z-0 w-full">
+      {/* <div className="sticky bottom-0 z-0 w-full">
         <Footer />
-      </div>
+      </div> */}
     </Shell>
   );
 }

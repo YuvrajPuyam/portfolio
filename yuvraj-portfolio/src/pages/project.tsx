@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import Shell from "../components/layout/Shell";
-import Footer from "../components/layout/Footer";
+
 import { PROJECTS } from "../data/projects";
 
 
@@ -28,24 +28,26 @@ export default function Project() {
   return (
     <Shell>
 {/* FULL-WIDTH HERO — NO SHADOW / NO FADE */}
-<div className="relative left-1/2 right-1/2 w-full -ml-[50vw] -mr-[50vw] overflow-hidden bg-[#111111]">
-  <div className="relative aspect-[16/9]">
-    {project.mediaType === "video" ? (
-      <video
-        src={project.mediaSrc}
-        className="absolute inset-0 h-full w-full object-cover"
-        autoPlay
-        loop
-        muted
-        playsInline
-      />
-    ) : (
-      <img
-        src={project.mediaSrc}
-        alt={project.title}
-        className="absolute inset-0 h-full w-full object-cover"
-      />
-    )}
+<div className="page-container">
+  <div className="relative -mx-6 md:-mx-12 lg:-mx-24 overflow-hidden bg-[#111111]">
+    <div className="relative aspect-[16/9]">
+      {project.mediaType === "video" ? (
+        <video
+          src={project.mediaSrc}
+          className="absolute inset-0 w-full h-full object-cover"
+          autoPlay
+          loop
+          muted
+          playsInline
+        />
+      ) : (
+        <img
+          src={project.mediaSrc}
+          alt={project.title}
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+      )}
+    </div>
   </div>
 </div>
 
@@ -185,10 +187,7 @@ export default function Project() {
           </div>
         </div>
 
-        {/* 3. Footer (Part of same z-10 layer) */}
-        <div className="bg-[#111111]">
-          <Footer />
-        </div>
+        
       </div>
     </Shell>
   );
