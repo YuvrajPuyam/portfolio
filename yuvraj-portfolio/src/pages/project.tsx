@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import Shell from "../components/layout/Shell";
+import Shell from "../components/layout/shell";
 
 import { PROJECTS } from "../data/projects";
 

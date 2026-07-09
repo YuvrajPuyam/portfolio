@@ -1,7 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Shell from "../components/layout/Shell";
-import Footer from "../components/layout/Footer";
+import Shell from "../components/layout/shell";
 import { PROJECTS } from "../data/projects";
 
 type ExperienceRow = {
@@ -11,20 +10,74 @@ type ExperienceRow = {
   desc: React.ReactNode;
 };
 
+type FocusRow = {
+  id: string;
+  domain: string;
+  detail: string;
+};
+
+const FOCUS: FocusRow[] = [
+  {
+    id: "01",
+    domain: "Agentic AI",
+    detail: "evals · harness & context engineering",
+  },
+  {
+    id: "02",
+    domain: "3D Vision",
+    detail: "reconstruction · gaussian splatting · nerfs",
+  },
+  {
+    id: "03",
+    domain: "Digital Twins",
+    detail: "world models · sim-to-real · openusd",
+  },
+  {
+    id: "04",
+    domain: "GPU Systems",
+    detail: "cuda · kernels · inference optimization",
+  },
+];
+
 const EXPERIENCE: ExperienceRow[] = [
   {
     id: "01",
     team: (
       <>
-        <a 
-          href="https://www.biup.ai/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href="https://pangea.chat/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="highlight-link"
+        >
+          Pangea Chat
+        </a>
+      </>
+    ),
+    dates: "2025 — Present",
+    desc: (
+      <>
+        <p>
+          AI engineer on Pangea Chat, an immersive language-learning platform
+          blending game design with language AI. Own LLM content generation end to end,
+          building multimodal image-generation pipelines, game-based learning activities,
+          and automated LLM-as-judge evaluation systems.
+        </p>
+      </>
+    ),
+  },
+  {
+    id: "02",
+    team: (
+      <>
+        <a
+          href="https://www.biup.ai/"
+          target="_blank"
+          rel="noopener noreferrer"
           className="highlight-link"
         >
           BiUP.ai
         </a>
-        <sup className="highlight-link-sup" aria-hidden="true"></sup>
       </>
     ),
     dates: "2024 — 2025",
@@ -50,25 +103,24 @@ const EXPERIENCE: ExperienceRow[] = [
     ),
   },
   {
-    id: "02",
+    id: "03",
     team: (
       <>
-        <a 
-          href="https://www.zs.com/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href="https://www.zs.com/"
+          target="_blank"
+          rel="noopener noreferrer"
           className="highlight-link"
         >
           ZS
         </a>
-        <sup className="highlight-link-sup" aria-hidden="true"></sup>
       </>
     ),
     dates: "2022 — 2024",
     desc: (
       <>
         <p>
-          Full-stack engineer on  {" "}
+          Full-stack engineer on{" "}
           <a href="https://www.youtube.com/watch?v=H8nBGqrBSCo" target="_blank" rel="noopener noreferrer" className="highlight-link">
             Forward
           </a><sup className="highlight-link-sup" aria-hidden="true">↗</sup>,{" "} ZS's enterprise forecasting suite, owning backend services and system workflows. 
@@ -78,18 +130,17 @@ const EXPERIENCE: ExperienceRow[] = [
     ),
   },
   {
-    id: "03",
+    id: "04",
     team: (
       <>
-        <a 
-          href="https://www.isro.gov.in/" 
-          target="_blank" 
-          rel="noopener noreferrer" 
+        <a
+          href="https://www.isro.gov.in/"
+          target="_blank"
+          rel="noopener noreferrer"
           className="highlight-link"
         >
           Indian Space Research Organisation
         </a>
-        <sup className="highlight-link-sup" aria-hidden="true"></sup>
       </>
     ),
     dates: "2022 — 2022",
@@ -104,7 +155,34 @@ const EXPERIENCE: ExperienceRow[] = [
   },
 ];
 
+// Tracks the project-grid column count across Tailwind's md/lg breakpoints
+function useGridColumns() {
+  const query = () =>
+    window.matchMedia("(min-width: 1024px)").matches
+      ? 3
+      : window.matchMedia("(min-width: 768px)").matches
+      ? 2
+      : 1;
+  const [count, setCount] = useState(query);
+  useEffect(() => {
+    const mqls = ["(min-width: 768px)", "(min-width: 1024px)"].map((q) =>
+      window.matchMedia(q)
+    );
+    const update = () => setCount(query());
+    mqls.forEach((m) => m.addEventListener("change", update));
+    return () => mqls.forEach((m) => m.removeEventListener("change", update));
+  }, []);
+  return count;
+}
+
 export default function Home() {
+  const columnCount = useGridColumns();
+  // Round-robin so recency reads left-to-right across the top row,
+  // instead of CSS columns filling the first column top to bottom
+  const columns = Array.from({ length: columnCount }, (_, c) =>
+    PROJECTS.filter((_, i) => i % columnCount === c)
+  );
+
   return (
     <Shell>
       {/* CURTAIN EFFECT PART 1:
@@ -120,24 +198,59 @@ export default function Home() {
             <div className="section-kicker">About</div>
 
             <p className="mt-2 body-copy">
-              I design software at the intersection of mathematics, performance, and visual experience.
-              My interests lie in Artificial Intelligence, Graphics, and High-performance systems, how visual systems are built,
-              scaled, and infused with intelligence through rendering and simulation pipelines. <br/><br/> I have Bachelor's Degree in
+              I design software at the intersection of spatial intelligence and real-time systems.
+              My interests lie in Agentic AI, 3D vision, and Digital Twins, how visual systems are built,
+              scaled, and infused with intelligence through rendering and simulation pipelines.
+              I believe the best systems are a product of technical rigor paired with a lot of polish and taste.
+              <br/><br/> I have a Bachelor's Degree in
               Computer Science and am currently pursuing a Master's at Purdue University,
-              specializing in Artificial Intelligence for Computer Graphics. Currently researching at{" "}
-              <a href="https://polytechnic.purdue.edu/facilities/games-innovation-laboratory" className="highlight-link">
-                Games Innovation Lab 
+              specializing in Artificial Intelligence for Computer Graphics. Currently researching Digital Twins at{" "}
+              <a href="https://polytechnic.purdue.edu/facilities/games-innovation-laboratory" className="highlight-link" target="_blank" rel="noopener noreferrer">
+                Games Innovation Lab
               </a><sup className="highlight-link-sup" aria-hidden="true">↗</sup>{" "}
               &{" "}
-              <a href="https://ideas.cs.purdue.edu/" className="highlight-link">
-                Ideas Lab 
+              Human-Object Interaction at{" "}
+              <a href="https://ideas.cs.purdue.edu/" className="highlight-link" target="_blank" rel="noopener noreferrer">
+                Ideas Lab
               </a><sup className="highlight-link-sup" aria-hidden="true">↗</sup>
               . If you're exploring ambitious ideas in Visual/Spatial computing or GPU-driven systems, I'd love to connect{" "}
               <a href="#contact" className="highlight-link">
-                Get in touch 
+                Get in touch
               </a><sup className="highlight-link-sup" aria-hidden="true">↗</sup>
               .
             </p>
+
+            {/* ===== Focus: instrument-readout rows ===== */}
+            <div className="mt-6">
+              <div className="section-kicker">Focus</div>
+              <div className="mt-2 border-t border-white/10">
+                {FOCUS.map((f) => (
+                  <div
+                    key={f.id}
+                    className="group grid grid-cols-12 items-baseline gap-x-4 border-b border-white/10 py-2.5 transition-colors hover:bg-white/[0.03]"
+                  >
+                    <div className="col-span-1 font-mono text-[12px] text-white/30 transition-colors group-hover:text-[#e8a04c]">
+                      {f.id}
+                    </div>
+                    <div className="col-span-4 content-title text-[13px] uppercase tracking-[0.08em]">
+                      {f.domain}
+                    </div>
+                    <div className="col-span-7 font-mono text-[11.5px] tracking-wide text-white/40 transition-colors group-hover:text-white/70">
+                      {f.detail}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ===== Open To ===== */}
+            <div className="mt-6">
+              <div className="section-kicker">Open To</div>
+              <div className="mt-2 font-mono text-[11.5px] tracking-wide text-white/60">
+                industry ai engineering · research labs · early-stage
+                co-founding in embodied ai / digital twins
+              </div>
+            </div>
           </div>
           <div className="hidden lg:block lg:col-span-1" />
           {/* RIGHT SIDE (6 total): TEAM (2) + DESCRIPTION (4) */}
@@ -182,17 +295,25 @@ export default function Home() {
         </section>
 
         {/* ===== Projects Section ===== */}
-        <section className="mt-10 px-3 pb-2"> 
-          <div className="masonry">
-            {PROJECTS.map((p) => (
-              <div key={p.slug} className="masonry-item">
-                <ProjectTile
-                  title={p.title}
-                  category={p.category}
-                  to={`/work/${p.slug}`}
-                  mediaSrc={p.mediaSrc}
-                  mediaType={p.mediaType}
-                />
+        <section className="mt-10 px-3 pb-2">
+          <div
+            className="grid gap-3"
+            style={{
+              gridTemplateColumns: `repeat(${columnCount}, minmax(0, 1fr))`,
+            }}
+          >
+            {columns.map((col, c) => (
+              <div key={c} className="flex flex-col gap-3">
+                {col.map((p) => (
+                  <ProjectTile
+                    key={p.slug}
+                    title={p.title}
+                    category={p.category}
+                    to={`/work/${p.slug}`}
+                    mediaSrc={p.mediaSrc}
+                    mediaType={p.mediaType}
+                  />
+                ))}
               </div>
             ))}
           </div>

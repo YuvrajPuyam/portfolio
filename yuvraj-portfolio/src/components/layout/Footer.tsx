@@ -6,7 +6,7 @@ export default function Footer({ version = "v1.0.0" }: Props) {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="relative mt-16 bg-neutral-900  ">
+    <footer id="contact" className="relative mt-16 bg-neutral-900">
       <div className="page-container w-full">
         {/* Top divider */}
         <div className="h-px w-full bg-white/10" />
@@ -20,8 +20,8 @@ export default function Footer({ version = "v1.0.0" }: Props) {
                 {version}
               </span>
             </div>
-            <div className="text-white/60 text-[13px]">
-              LAST UPDATED {currentYear}-12-31
+            <div className="text-white/60 text-[13px] section-kicker">
+              LAST UPDATED {currentYear}
             </div>
           </div>
 

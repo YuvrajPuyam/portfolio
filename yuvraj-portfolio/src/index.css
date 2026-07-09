@@ -55,21 +55,7 @@
     @apply text-white/50 font-medium;
   }
 
-  /* Masonry: 1 col mobile, 2 tablet, 3 desktop */
-  .masonry {
-    @apply columns-1 md:columns-2 lg:columns-3 gap-3;
-  }
-
-  /* Prevent cards from splitting between columns */
-  .masonry-item {
-    @apply break-inside-avoid mb-3;
-  }
-
-  .page-container {
-  @apply mx-auto w-full max-w-[1440px] px-3 sm:px-3 lg:px-3;
-}
-
-.highlight-link {
+  .highlight-link {
     @apply inline-flex items-start gap-1
            text-white
            underline underline-offset-4
@@ -84,7 +70,7 @@
 
   /* Superscript arrow */
   .highlight-link-sup {
-    @apply text-yellow-400 text-[0.65em] leading-none no-underline !important;
+    @apply text-yellow-400 text-[0.65em] leading-none;
     vertical-align: super;
     position: relative;
     top: -0.1em; /* optical correction */

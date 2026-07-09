@@ -9,7 +9,7 @@ export default function Shell({ children }: { children: React.ReactNode }) {
 
       <Header
         name="Yuvraj Puyam"
-        role="Graphics & AI Engineer"
+        role="AI Engineer · 3D Vision"
         locationText="West Lafayette, IN"
       />
 
